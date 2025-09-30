@@ -960,19 +960,19 @@
 			console.log('Guest name:', guestName);
 			console.log('Greeting element:', greetingElement);
 			
-			if (guestName && greetingElement) {
+			if (greetingElement) {
 				// Create personalized greeting
 				var greetingDiv = document.createElement('div');
 				greetingDiv.className = 'personalized-greeting';
 				greetingDiv.style.cssText = `
 					font-family: 'Dancing Script', cursive;
-					font-size: 1.5em;
+					font-size: 1.8em;
 					color: #fff;
 					margin-bottom: 20px;
 					text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 					animation: fadeInUp 1s ease-out;
 				`;
-				greetingDiv.innerHTML = `Xin chào ${guestName}!<br><span style="font-size: 0.8em; opacity: 0.9;">Chúng tôi rất vui được mời bạn tham dự lễ cưới của chúng tôi</span>`;
+				greetingDiv.innerHTML = `Xin chào bạn!<br><span style="font-size: 0.9em; opacity: 0.9;">Chúng tôi rất vui được mời bạn tham dự lễ cưới của chúng tôi</span>`;
 				
 				// Insert before the main title
 				var mainTitle = greetingElement.querySelector('h1');
