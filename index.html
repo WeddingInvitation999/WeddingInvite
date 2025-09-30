@@ -974,8 +974,13 @@
 				`;
 				
 				// Check if we have a guest name, otherwise use default greeting
-				var greetingText = guestName ? `Xin chào ${guestName}!` : 'Xin chào bạn!';
-				greetingDiv.innerHTML = `${greetingText}<br><span style="font-size: 1.5em; opacity: 0.9;">Chúng tôi rất vui được mời bạn tham dự lễ cưới của chúng tôi</span>`;
+				var greetingText;
+				if (guestName) {
+					greetingText = `Xin chào <span style="font-size: 1.3em; font-weight: bold;">${guestName}</span>!`;
+				} else {
+					greetingText = 'Xin chào bạn!';
+				}
+				greetingDiv.innerHTML = `${greetingText}<br><span style="font-size: 0.9em; opacity: 0.9;">Chúng tôi rất vui được mời bạn tham dự lễ cưới của chúng tôi</span>`;
 				
 				// Insert before the main title
 				var mainTitle = greetingElement.querySelector('h1');
