@@ -972,13 +972,16 @@
 					text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 					animation: fadeInUp 1s ease-out;
 				`;
-				greetingDiv.innerHTML = `Xin chào bạn!<br><span style="font-size: 0.9em; opacity: 0.9;">Chúng tôi rất vui được mời bạn tham dự lễ cưới của chúng tôi</span>`;
+				
+				// Check if we have a guest name, otherwise use default greeting
+				var greetingText = guestName ? `Xin chào ${guestName}!` : 'Xin chào bạn!';
+				greetingDiv.innerHTML = `${greetingText}<br><span style="font-size: 0.9em; opacity: 0.9;">Chúng tôi rất vui được mời bạn tham dự lễ cưới của chúng tôi</span>`;
 				
 				// Insert before the main title
 				var mainTitle = greetingElement.querySelector('h1');
 				greetingElement.insertBefore(greetingDiv, mainTitle);
 				
-				console.log('Personalized greeting added for:', guestName);
+				console.log('Personalized greeting added for:', guestName || 'default');
 			} else {
 				console.log('No greeting added. Guest name:', guestName, 'Element:', greetingElement);
 			}
