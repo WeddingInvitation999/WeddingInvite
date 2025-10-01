@@ -931,7 +931,10 @@
 			// First try to get from URL parameters
 			var nameFromParam = getUrlParameter('name');
 			if (nameFromParam && nameFromParam.trim() !== '') {
-				return nameFromParam.charAt(0).toUpperCase() + nameFromParam.slice(1).toLowerCase();
+				// Capitalize first letter of each word
+				return nameFromParam.toLowerCase().replace(/\b\w/g, function(letter) {
+					return letter.toUpperCase();
+				});
 			}
 			
 			// If no parameter, try to get from URL path
@@ -944,9 +947,11 @@
 				lastPart = pathParts[pathParts.length - 2];
 			}
 			
-			// Clean up the name (remove special characters, capitalize first letter)
+			// Clean up the name (remove special characters, capitalize first letter of each word)
 			if (lastPart && lastPart !== 'WeddingInvite' && lastPart !== '') {
-				return lastPart.charAt(0).toUpperCase() + lastPart.slice(1).toLowerCase();
+				return lastPart.toLowerCase().replace(/\b\w/g, function(letter) {
+					return letter.toUpperCase();
+				});
 			}
 			
 			return null;
