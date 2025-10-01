@@ -235,7 +235,7 @@
 				<div class="couple-wrap animate-box img-responsive">
 					<div class="couple-half d-flex">
 						<div class="groom">
-							<img src="images/groom.jpg" alt="groom" class="img-responsive">
+							<img src="images/groom.jpg" alt="groom" class="img-responsive" style="object-fit: contain; background: black;">
 						</div>
 						<div class="desc-groom">
 							<h3 style="font-family: 'Pacifico'">Anh Dũng</h3>
@@ -938,9 +938,11 @@
 			// First try to get from URL parameters
 			var nameFromParam = getUrlParameter('name');
 			if (nameFromParam && nameFromParam.trim() !== '') {
-				// Capitalize first letter of each word
-				return nameFromParam.toLowerCase().replace(/\b\w/g, function(letter) {
-					return letter.toUpperCase();
+				// Capitalize only first letter after space
+				return nameFromParam.toLowerCase().replace(/\s\w/g, function(match) {
+					return match.toUpperCase();
+				}).replace(/^\w/, function(match) {
+					return match.toUpperCase();
 				});
 			}
 			
@@ -954,10 +956,12 @@
 				lastPart = pathParts[pathParts.length - 2];
 			}
 			
-			// Clean up the name (remove special characters, capitalize first letter of each word)
+			// Clean up the name (remove special characters, capitalize only first letter after space)
 			if (lastPart && lastPart !== 'WeddingInvite' && lastPart !== '') {
-				return lastPart.toLowerCase().replace(/\b\w/g, function(letter) {
-					return letter.toUpperCase();
+				return lastPart.toLowerCase().replace(/\s\w/g, function(match) {
+					return match.toUpperCase();
+				}).replace(/^\w/, function(match) {
+					return match.toUpperCase();
 				});
 			}
 			
